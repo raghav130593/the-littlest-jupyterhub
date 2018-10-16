@@ -35,6 +35,8 @@ idleTimeout = "10m0s"
   address = ":{{https['port']}}"
   backend = "jupyterhub"
   [entryPoints.https.tls]
+  minVersion = "VersionTLS12"
+  cipherSuites = ["TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_RC4_128_SHA", "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305"]
   {% if https['tls']['cert'] %}
     [[entryPoints.https.tls.certificates]]
       certFile = "{{https['tls']['cert']}}"
